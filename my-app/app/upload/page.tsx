@@ -27,7 +27,7 @@ export default function Upload() {
     formData.append('file', file)
 
     try {
-      const url = 'http://localhost:3001/upload'
+      const url = '/api/upload'
       const res = await axios.post<{ message: string }>(url, formData)
 
       if (res.status === 200) {

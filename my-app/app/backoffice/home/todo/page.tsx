@@ -33,7 +33,7 @@ export default function Todo() {
 
     const filterData = async () => {
         try {
-            const url = Config.apiUrl + '/todo/filter/' + status
+            const url = Config.apiUrl + '/todo/list?status=' + status
             const token = localStorage.getItem('token')
             const headers = { 'Authorization': 'Bearer ' + token }
 
@@ -83,7 +83,7 @@ export default function Todo() {
                 const url = Config.apiUrl + '/todo/create'
                 await axios.post(url, payload, { headers })
             } else {
-                const urlEdit = Config.apiUrl + '/todo/update/' + id
+                const urlEdit = Config.apiUrl + '/todo/' + id
                 await axios.put(urlEdit, payload, { headers })
             }
 
@@ -131,7 +131,7 @@ export default function Todo() {
 
         if (confirmButton.isConfirmed) {
             try {
-                const url = Config.apiUrl + '/todo/remove/' + id
+                const url = Config.apiUrl + '/todo/' + id
                 const token = localStorage.getItem('token')
                 const headers = { 'Authorization': 'Bearer ' + token }
                 await axios.delete(url, { headers })
@@ -150,7 +150,7 @@ export default function Todo() {
 
     const updateStatus = async (id: number, status: string) => {
         try {
-            const url = Config.apiUrl + '/todo/updateStatus/' + id
+            const url = Config.apiUrl + '/todo/' + id
             const token = localStorage.getItem('token')
             const headers = { 'Authorization': 'Bearer ' + token }
             const payload = { status: status }
