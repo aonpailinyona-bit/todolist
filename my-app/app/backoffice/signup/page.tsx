@@ -43,10 +43,11 @@ export default function SignUp() {
         localStorage.setItem('token', res.data.token)
         router.push('/backoffice/signin')
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
+      const backendError = err.response?.data?.error || err.message
       Swal.fire({
         title: 'error',
-        text: (err as Error).message,
+        text: backendError,
         icon: 'error'
       })
     }
