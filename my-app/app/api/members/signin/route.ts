@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
     const secret_key = process.env.SECRET_KEY || "defaultSecretKey"
     const payload = { id: findUser.id }
-    const options = { expiresIn: '1d' }
+    const options: jwt.SignOptions = { expiresIn: '1d' }
 
     const token = jwt.sign(payload, secret_key, options)
 
